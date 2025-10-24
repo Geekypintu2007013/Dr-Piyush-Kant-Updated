@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Piyush Kant Portfolio</title>
+  <style>
+    * {box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif;}
+    body {
+      background: linear-gradient(135deg, #0a0f29, #12224c, #1b3b6f, #0a0f29);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 70px 20px;
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+    header h1 {
+      font-size: 46px;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff90;
+    }
+    header p {
+      color: #c9d6ff;
+      font-size: 18px;
+      margin-top: 10px;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 50px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: floatUp 1s ease forwards;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.15);
+      filter: brightness(1.15);
+    }
+
+    .photo:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.9));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .photo:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay h3 {
+      font-size: 22px;
+      color: #00ffff;
+      margin-bottom: 6px;
+      text-shadow: 0 0 8px #00ffff80;
+    }
+
+    .overlay p {
+      font-size: 14px;
+      color: #ddd;
+      text-align: center;
+      max-width: 220px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #bbb;
+      font-size: 15px;
+      letter-spacing: 1px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes floatUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Scroll fade-in */
+    .fade {opacity: 0; transform: translateY(20px); transition: all 0.5s ease-out;}
+    .fade.visible {opacity: 1; transform: translateY(0);}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lab Gallery</h1>
+    <p>Explore innovation at <b>EM Power Lab – Piyush Kant</b></p>
+  </header>
+
+  <section class="gallery">
+    <div class="photo fade"><img src="images/lab1.jpg" alt="Lab Project 1"><div class="overlay"><h3>State of Art Tools</h3><p>Precision-engineered PCB layouts</p></div></div>
+    <div class="photo fade"><img src="images/lab2.jpg" alt="Lab Project 2"><div class="overlay"><h3>Co-Working Space</h3><p>Collaborative environment for UAV testing</p></div></div>
+    <div class="photo fade"><img src="images/lab3.jpg" alt="Lab Project 3"><div class="overlay"><h3>Embedded Prototype</h3><p>Custom MCU-based embedded systems</p></div></div>
+    <div class="photo fade"><img src="images/lab4.jpg" alt="Lab Project 4"><div class="overlay"><h3>Hardware Debugging</h3><p>Real-time testing and fault analysis</p></div></div>
+    <div class="photo fade"><img src="images/lab5.jpg" alt="Lab Project 5"><div class="overlay"><h3>Inventory Zone</h3><p>Organized high-end electronic components</p></div></div>
+    <div class="photo fade"><img src="images/lab6.jpg" alt="Lab Project 6"><div class="overlay"><h3>Assembly & Testing</h3><p>Validation of assembled prototypes</p></div></div>
+    <div class="photo fade"><img src="images/lab7.jpg" alt="Lab Project 7"><div class="overlay"><h3>Testing Facility</h3><p>Comprehensive lab for performance tuning</p></div></div>
+    <div class="photo fade"><img src="images/lab8.jpg" alt="Lab Project 8"><div class="overlay"><h3>PCB Designing</h3><p>Advanced circuit design and prototyping</p></div></div>
+    <div class="photo fade"><img src="images/lab9.jpg" alt="Lab Project 9"><div class="overlay"><h3>Software & Analysis</h3><p>Real-time circuit simulation and validation</p></div></div>
+  </section>
+
+  <footer>© 2025 Piyush Kant | EM Power Lab</footer>
+
+  <script>
+    const elements = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+    elements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
